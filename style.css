@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+
+* {
+font-family: 'Roboto'
+, sans-serif;
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.row {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 40px 15px;
+    z-index: 1000;
+}
+
+img {
+    max-width: 100%;
+}
+
+/*
+
+NAV
+
+*/
+
+.nav {
+    position: relative;
+}
+
+.logo--links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 100px;
+    z-index: 2;
+}
+
+.logo__nav {
+width: 18%;
+}
+
+.search__bar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input__wrapper {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    z-index: 2;
+}
+
+input {
+    color: rgba(0, 0, 0, 0.87);
+    width: 100%;
+    max-width: 800px;
+    height: 60px;
+    font-size: 20px;
+    padding-left: 20px;
+    border: 0;
+    outline: 0;
+}
+
+.search__wrapper {
+    position: absolute;
+    cursor: pointer;
+    top: 10px;
+    bottom: 0;
+    right: 0;
+    z-index: 10000;
+    padding: 0 20px 0 8px;
+    font-size: 32px;
+    transition: all .2s ease;
+    align-items: center;
+}
+
+.fa-magnifying-glass {
+    transition: color 300ms ease;
+}
+
+.fa-magnifying-glass:hover {
+    color: rgba(0, 0, 0, 0.205);
+    transition: color 300ms ease;
+}
+
+.nav__links {
+    display: flex;
+}
+
+.nav__link {
+    margin-left: 24px;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+}
+
+.nav__link--contact {
+    border: 2px solid black;
+    border-radius: 9999px;
+    padding: 12px 24px;
+    background-color: black;
+    color: white;
+}
+
+
+.nav__h1 {
+    margin-bottom: 40px;
+}
+
+.background {
+    background-color: rgba(0, 0, 0, 0.205)
+}
+
+/* 
+
+SEARCH RESULTS
+
+*/
+
+.movie-list {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .movie {
+    width: 50%;
+  }
+  
+  .movie-card {
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .movie-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .movie-card__container {
+    padding: 2px 16px;
+  }
+
+  .movie-card__img {
+    width: 100%;
+  }
