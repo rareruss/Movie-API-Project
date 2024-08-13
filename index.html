@@ -26,7 +26,7 @@
                         Browse Movies
                     </h1>
                     <div class="input__wrapper">
-                        <input class="search" type="text" placeholder="Search by Movie Title">
+                        <input class="search" type="text" placeholder="Search by Movie Title" onchange="onSearchChange(event)" >
                         <div class="search__wrapper">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
@@ -37,7 +37,15 @@
     </section>
     <section id="search">
         <div class="row">
+            <div class="filter__wrapper">
+            <select id="filter" onchange="filterMovies(event)">
+                <option value="" disabled selected>Sort</option>
+                <option value="NEW_TO_OLD">Year, Newest to Oldest</option>
+                <option value="OLD_TO_NEW">Year, Oldest to Newest</option>
+            </select>
+            </div>
             <div class="movie-list">
+                <i class="fa-solid fa-spinner movies__loading--spinner"></i>
                 <div class="movie">
                     <div class="movie-card">
                         <div class="movie-card__container">
