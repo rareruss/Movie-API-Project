@@ -12,7 +12,6 @@ async function main() {
 
 main()
 
-
  function movieHTML(movie) {
     return `<div class="movie-card">
         <div class="movie-card__container">
