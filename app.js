@@ -42,9 +42,8 @@ async function renderMovies(Title) {
 }
 
 function renderFilterMovies(filter) {     
-    
 
-    showLoading();
+        showLoading();
 
         if (filter === 'NEW_TO_OLD') {
             movies.sort((a, b) => a.Year - b.Year)
@@ -53,7 +52,9 @@ function renderFilterMovies(filter) {
         else if (filter === 'OLD_TO_NEW') {
             movies.sort((a, b) => b.Year - a.Year)
         }
-    hideLoading()
+
+        hideLoading();
+        
 }
 
 function showLoading() {
