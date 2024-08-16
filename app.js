@@ -22,40 +22,46 @@ main()
         </div>`
  }
 
-async function onSearchChange(event) {
+async function onSearchChangeandFilter(event) {
     const Title = event.target.value;
     renderMovies(Title)
 }
 
-async function renderMovies(Title) {
-    showLoading();
+async function onSearchChangeandFilter(event) {
+  const filter = document.getElementById('filter').value;
+  const searchInput = document.querySelector('.search').value;
 
-  const movies = await fetch(
-    `http://www.omdbapi.com/?apikey=42df4fab&s=${Title}`
-  );
-  const moviesData = await movies.json();
-  movieListEl.innerHTML = moviesData.Search?.map((movie) =>
-    movieHTML(movie)
-  ).join("");
+  showLoading();
+
+  const response = await fetch(`http://www.omdbapi.com/?apikey=42df4fab&s=${searchInput}`);
+  const moviesData = await response.json();
+
+  if (moviesData.Search) {
+    renderFilterMovies(moviesData.Search, filter);
+  }
 
   hideLoading();
 }
 
-function renderFilterMovies(filter) {     
+function renderFilterMovies(movies, filter) {     
 
         showLoading();
 
         if (filter === 'NEW_TO_OLD') {
-            movies.sort((a, b) => a.Year - b.Year)
+            movies.sort((a, b) => b.Year - a.Year)
         }
 
         else if (filter === 'OLD_TO_NEW') {
-            movies.sort((a, b) => b.Year - a.Year)
+            movies.sort((a, b) => a.Year - b.Year)
         }
+
+        movieListEl.innerHTML = movies.map((movie) => movieHTML(movie)).join("");
 
         hideLoading();
         
 }
+
+
 
 function showLoading() {
   movieListEl.innerHTML = '<div class="loading"> <i class="fa-solid fa-spinner movies__loading--spinner"></i></div>';
