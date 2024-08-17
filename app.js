@@ -1,70 +1,67 @@
-const movieListEl = document.querySelector('.movie-list');
-
+const movieListEl = document.querySelector(".movie-list");
+let movies;
 async function main() {
-    showLoading();
-    const movies = await fetch("http://www.omdbapi.com/?apikey=42df4fab&s=movie");
-    const moviesData = await movies.json();
-    movieListEl.innerHTML = moviesData.Search.map((movie) =>
-      movieHTML(movie)
-    ).join("");
-    hideLoading();
-  }
+  showLoading();
+  const movies = await fetch("http://www.omdbapi.com/?apikey=42df4fab&s=movie");
+  const moviesData = await movies.json();
+  movieListEl.innerHTML = moviesData.Search.map((movie) =>
+    movieHTML(movie)
+  ).join("");
+  hideLoading();
+}
 
-main()
+main();
 
- function movieHTML(movie) {
-    return `<div class="movie-card">
+function movieHTML(movie) {
+  return `
+    <div class="movie-card">
         <div class="movie-card__container">
             <figure class="movie-card__img"><img src="${movie.Poster}"></figure>
                 <h3>${movie.Title}</h3>
                     <p><b>Year Released </b> ${movie.Year}</p>
             </div>
-        </div>`
- }
-
-async function onSearchChangeandFilter(event) {
-    const Title = event.target.value;
-    renderMovies(Title)
+        </div>`;
 }
 
 async function onSearchChangeandFilter(event) {
-  const filter = document.getElementById('filter').value;
-  const searchInput = document.querySelector('.search').value;
+  const Title = event.target.value;
+  renderMovies(Title);
+}
+
+async function onSearchChangeandFilter(event) {
+  const filter = document.getElementById("filter").value;
+  const searchInput = document.querySelector(".search").value;
 
   showLoading();
 
-  const response = await fetch(`http://www.omdbapi.com/?apikey=42df4fab&s=${searchInput}`);
+  const response = await fetch(
+    `http://www.omdbapi.com/?apikey=42df4fab&s=${searchInput}`
+  );
   const moviesData = await response.json();
 
   if (moviesData.Search) {
-    renderFilterMovies(moviesData.Search, filter);
+   renderFilterMovies(moviesData.Search, filter);
   }
 
   hideLoading();
 }
 
-function renderFilterMovies(movies, filter) {     
+function renderFilterMovies(movies, filter) {
+  showLoading();
+  if (filter === "NEW_TO_OLD") {
+    movies.sort((a, b) => b.Year - a.Year);
+  } else if (filter === "OLD_TO_NEW") {
+    movies.sort((a, b) => a.Year - b.Year);
+  }
 
-        showLoading();
-
-        if (filter === 'NEW_TO_OLD') {
-            movies.sort((a, b) => b.Year - a.Year)
-        }
-
-        else if (filter === 'OLD_TO_NEW') {
-            movies.sort((a, b) => a.Year - b.Year)
-        }
-
-        movieListEl.innerHTML = movies.map((movie) => movieHTML(movie)).join("");
-
-        hideLoading();
-        
+  movieListEl.innerHTML = movies.map((movie) => movieHTML(movie)).join("");
+  hideLoading();
+  console.log(movies)
 }
 
-
-
 function showLoading() {
-  movieListEl.innerHTML = '<div class="loading"> <i class="fa-solid fa-spinner movies__loading--spinner"></i></div>';
+  movieListEl.innerHTML =
+    '<div class="loading"> <i class="fa-solid fa-spinner movies__loading--spinner"></i></div>';
   movieListEl.classList.add("movies__loading");
 }
 
@@ -73,5 +70,5 @@ function hideLoading() {
 }
 
 function filterMovies(event) {
-    renderFilterMovies(event.target.value)
+  renderFilterMovies(event.target.value);
 }
