@@ -24,8 +24,7 @@ function movieHTML(movie) {
 }
 
 async function onSearchChangeandFilter(event) {
-  const Title = event.target.value;
-  renderMovies(Title);
+  renderMovies(event.target.value)
 }
 
 async function onSearchChangeandFilter(event) {
@@ -43,21 +42,32 @@ async function onSearchChangeandFilter(event) {
    renderFilterMovies(moviesData.Search, filter);
   }
 
-  hideLoading();
-}
-
-function renderFilterMovies(movies, filter) {
-  showLoading();
-  if (filter === "NEW_TO_OLD") {
-    movies.sort((a, b) => b.Year - a.Year);
-  } else if (filter === "OLD_TO_NEW") {
-    movies.sort((a, b) => a.Year - b.Year);
+  function renderFilterMovies(movies, filter) {
+    showLoading();
+    if (filter === "NEW_TO_OLD") {
+      movies.sort((a, b) => b.Year - a.Year);
+    } else if (filter === "OLD_TO_NEW") {
+      movies.sort((a, b) => a.Year - b.Year);
+    }
+  
+    movieListEl.innerHTML = movies.map((movie) => movieHTML(movie)).join("");
+    hideLoading();
   }
 
-  movieListEl.innerHTML = movies.map((movie) => movieHTML(movie)).join("");
   hideLoading();
-  console.log(movies)
 }
+
+// function renderFilterMovies(movies, filter) {
+//   showLoading();
+//   if (filter === "NEW_TO_OLD") {
+//     movies.sort((a, b) => b.Year - a.Year);
+//   } else if (filter === "OLD_TO_NEW") {
+//     movies.sort((a, b) => a.Year - b.Year);
+//   }
+
+//   movieListEl.innerHTML = movies.map((movie) => movieHTML(movie)).join("");
+//   hideLoading();
+// }
 
 function showLoading() {
   movieListEl.innerHTML =
@@ -69,6 +79,6 @@ function hideLoading() {
   movieListEl.classList.remove("movies__loading");
 }
 
-function filterMovies(event) {
-  renderFilterMovies(event.target.value);
-}
+// function filterMovies(event) {
+//   renderFilterMovies(event.target.value);
+// }
