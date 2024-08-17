@@ -2,7 +2,7 @@ const movieListEl = document.querySelector(".movie-list");
 let movies;
 async function main() {
   showLoading();
-  const movies = await fetch("http://www.omdbapi.com/?apikey=42df4fab&s=movie");
+  const movies = await fetch("https://www.omdbapi.com/?apikey=42df4fab&s=movie");
   const moviesData = await movies.json();
   movieListEl.innerHTML = moviesData.Search.map((movie) =>
     movieHTML(movie)
@@ -34,7 +34,7 @@ async function onSearchChangeandFilter(event) {
   showLoading();
 
   const response = await fetch(
-    `http://www.omdbapi.com/?apikey=42df4fab&s=${searchInput}`
+    `https://www.omdbapi.com/?apikey=42df4fab&s=${searchInput}`
   );
   const moviesData = await response.json();
 
