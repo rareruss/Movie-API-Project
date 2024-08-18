@@ -212,6 +212,7 @@ select {
 .filter__wrapper {
     display: flex;
     justify-content: flex-end;
+    padding: 16px 0;
 }
 
 .movie-list {
