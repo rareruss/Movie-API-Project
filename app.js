@@ -57,18 +57,6 @@ async function onSearchChangeandFilter(event) {
   hideLoading();
 }
 
-// function renderFilterMovies(movies, filter) {
-//   showLoading();
-//   if (filter === "NEW_TO_OLD") {
-//     movies.sort((a, b) => b.Year - a.Year);
-//   } else if (filter === "OLD_TO_NEW") {
-//     movies.sort((a, b) => a.Year - b.Year);
-//   }
-
-//   movieListEl.innerHTML = movies.map((movie) => movieHTML(movie)).join("");
-//   hideLoading();
-// }
-
 function showLoading() {
   movieListEl.innerHTML =
     '<div class="loading"> <i class="fa-solid fa-spinner movies__loading--spinner"></i></div>';
@@ -79,6 +67,14 @@ function hideLoading() {
   movieListEl.classList.remove("movies__loading");
 }
 
-// function filterMovies(event) {
-//   renderFilterMovies(event.target.value);
-// }
+function openMenu() {
+  document.body.classList += " menu--open"
+  const element = document.getElementById("nav__row");
+  element.classList.remove("padding")
+}
+
+function closeMenu() {
+   document.body.classList.remove('menu--open')
+   const element = document.getElementById("nav__row");
+   element.classList += (" padding")
+}

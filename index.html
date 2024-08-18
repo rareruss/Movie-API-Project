@@ -9,7 +9,7 @@
 </head>
 <body>
     <section id="nav">
-        <div class="row background">
+        <div id="nav__row" class="row background padding">
             <div class="nav">
                 <div class="logo--links">
                 <figure class="logo__nav">
@@ -20,6 +20,26 @@
                     <li><a href="#" class="nav__link"> Find your Movie</a></li>
                     <li><a href="#" class="nav__link nav__link--contact">Contact</a></li>
                 </ul>
+                
+                <button class="btn__menu" onclick="openMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="menu__backdrop">
+                    <button class="btn__menu btn__menu--close" onclick="closeMenu()">
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <ul class="menu__links">
+                      <li class="menu__list">
+                        <a href="#" class="menu__link" onclick="closeMenu()">Home</a>
+                      </li>
+                      <li class="menu__list">
+                        <a href="#" class="menu__link" onclick="closeMenu()">Find Your Movie</a>
+                      </li>
+                      <li class="menu__list">
+                        <a href="#" class="menu__link no__cursor" onclick="closeMenu()">Contact</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <div class="search__bar">
                     <h1 class="nav__h1">
